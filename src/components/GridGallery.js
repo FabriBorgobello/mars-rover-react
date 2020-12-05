@@ -18,6 +18,7 @@ export const GridGallery = () => {
 		})
 		return filteredPhotos
 	}
+
 	return (
 		<Gallery
 			images={normalizePhotos()}

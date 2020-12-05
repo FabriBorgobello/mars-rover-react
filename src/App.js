@@ -7,7 +7,7 @@ const App = () => {
 	// State
 	const [rover, setRover] = React.useState("curiosity")
 	const [sol, setSol] = React.useState("")
-	const [earthDate, setEarthDay] = React.useState("2015-6-3")
+	const [earthDate, setEarthDate] = React.useState("")
 
 	// Redux hooks
 	const dispatch = useDispatch()
@@ -27,10 +27,12 @@ const App = () => {
 			{/* Form */}
 			<div>
 				{/* Radio Button */}
+				<label>Rover</label>
 				<div
 					onChange={(e) => {
 						setRover(e.target.value)
 						setSol("")
+						setEarthDate("")
 					}}
 				>
 					<input type='radio' id='curiosity' name='rover' value='curiosity' defaultChecked />
@@ -46,11 +48,30 @@ const App = () => {
 				<form
 					onSubmit={(e) => {
 						e.preventDefault()
+						setEarthDate("")
 						dispatch(fetchPhotosBySol(rover, sol))
 					}}
 				>
-					<label>Search by Sol Date</label>
-					<input value={sol} type='number' placeholder='Enter a Sol Date...' onChange={(e) => setSol(e.target.value)} />
+					<label>Search by Sol</label>
+					<input value={sol} type='number' placeholder='Enter a Sol...' onChange={(e) => setSol(e.target.value)} required />
+					<button type='submit'>Search</button>
+				</form>
+				{/* Earth Date */}
+				<form
+					onSubmit={(e) => {
+						e.preventDefault()
+						setSol("")
+						dispatch(fetchPhotosByEarthDate(rover, earthDate))
+					}}
+				>
+					<label>Search by Earth Date</label>
+					<input
+						value={earthDate}
+						type='date'
+						placeholder='Enter a date...'
+						onChange={(e) => setEarthDate(e.target.value)}
+						required
+					/>
 					<button type='submit'>Search</button>
 				</form>
 			</div>
@@ -60,6 +81,7 @@ const App = () => {
 			{loading && <div>Loading...</div>}
 			{hasErrors && <div>There has been an error processing your request</div>}
 			{photos.length > 0 && <GridGallery />}
+			{photos.length === 0 && !loading && !hasErrors && <div>There are no photos for the specified data</div>}
 		</>
 	)
 }
