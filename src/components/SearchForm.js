@@ -1,29 +1,12 @@
 import { useDispatch } from "react-redux"
 import { fetchPhotosByEarthDate, fetchPhotosBySol } from "../slices/photos"
 
-export const Form = ({ rover, setRover, sol, setSol, earthDate, setEarthDate }) => {
+export const SearchForm = ({ rover, setRover, sol, setSol, earthDate, setEarthDate }) => {
 	const dispatch = useDispatch()
 
 	return (
 		<div>
-			{/* Radio Button */}
-			<label>Rover</label>
-			<div
-				onChange={(e) => {
-					setRover(e.target.value)
-					setSol("")
-					setEarthDate("")
-				}}
-			>
-				<input type='radio' id='curiosity' name='rover' value='curiosity' defaultChecked />
-				<label htmlFor='curiosity'>Curiosity</label>
-				<br />
-				<input type='radio' id='opportunity' name='rover' value='opportunity' />
-				<label htmlFor='opportunity'>Opportunity</label>
-				<br />
-				<input type='radio' id='spirit' name='rover' value='spirit' />
-				<label htmlFor='spirit'>Spirit</label>
-			</div>
+			<h3>Filter photos</h3>
 			{/* Sol */}
 			<form
 				onSubmit={(e) => {

@@ -39,7 +39,7 @@ export const fetchManifest = (rover) => async (dispatch) => {
 
 	try {
 		const response = await axios.get(`manifests/${rover}`)
-		dispatch(getManifestSuccess(response.data))
+		dispatch(getManifestSuccess(response.data.photo_manifest))
 	} catch (error) {
 		dispatch(getManifestFailure())
 	}
