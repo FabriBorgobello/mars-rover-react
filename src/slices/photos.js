@@ -39,7 +39,7 @@ export const fetchLatestPhotos = (rover) => async (dispatch) => {
 
 	try {
 		const response = await axios.get(`rovers/${rover}/latest_photos`)
-		dispatch(getPhotosSuccess(response.data))
+		dispatch(getPhotosSuccess(response.data.latest_photos))
 	} catch (error) {
 		dispatch(getPhotosFailure())
 	}
@@ -49,7 +49,7 @@ export const fetchPhotosBySol = (rover, sol) => async (dispatch) => {
 
 	try {
 		const response = await axios.get(`rovers/${rover}/photos?sol=${sol}`)
-		dispatch(getPhotosSuccess(response.data))
+		dispatch(getPhotosSuccess(response.data.photos))
 	} catch (error) {
 		dispatch(getPhotosFailure())
 	}
@@ -59,7 +59,7 @@ export const fetchPhotosByEarthDate = (rover, earthDate) => async (dispatch) => 
 
 	try {
 		const response = await axios.get(`rovers/${rover}/photos?earth_date=${earthDate}`)
-		dispatch(getPhotosSuccess(response.data))
+		dispatch(getPhotosSuccess(response.data.photos))
 	} catch (error) {
 		dispatch(getPhotosFailure())
 	}
