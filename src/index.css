@@ -55,19 +55,16 @@ li {
 }
 header {
 	background-color: #14121f;
-	width: 100vw;
 	clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
 }
 
-.first-section {
-	display: flex;
-	padding: 1rem 3rem;
-}
+.first-section,
 .second-section {
 	display: flex;
-	margin-bottom: 2rem;
 	padding: 1rem 3rem;
+	margin-bottom: 1rem;
 }
+
 .card-rover {
 	width: 20%;
 }
@@ -83,14 +80,14 @@ header {
 	display: flex;
 	flex-direction: column;
 }
-.card-search .inputs .form {
+.card-search .inputs .search-form {
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
 	margin: 1rem 0;
 }
-.card-search .inputs .form button {
-	margin-top: 0.5rem;
+.formElement {
+	margin: 2rem 0;
 }
 
 .gallery {
