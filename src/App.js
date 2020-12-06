@@ -53,7 +53,9 @@ const App = () => {
 	return (
 		<div className='main-container'>
 			<header>
-				<h1>Mars Rover Photos</h1>
+				<h1>
+					<a href='/'>Mars Rover Photos</a>
+				</h1>
 			</header>
 			<div className='first-section'>
 				{/* Radio Button */}
