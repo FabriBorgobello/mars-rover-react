@@ -6,7 +6,6 @@ import { Manifest } from "./components/Manifest"
 import { fetchManifest, manifestSelector } from "./slices/manifest"
 import { fetchLatestPhotos, photosSelector } from "./slices/photos"
 import { SelectRoverForm } from "./components/SelectRoverForm"
-import { Grid } from "@material-ui/core"
 
 const App = () => {
 	// State
@@ -15,6 +14,7 @@ const App = () => {
 	// Redux hooks
 	const dispatch = useDispatch()
 	const { photos, loading, hasErrors } = useSelector(photosSelector)
+	const { manifest } = useSelector(manifestSelector)
 
 	React.useEffect(() => {
 		// Get mission manifest
@@ -39,33 +39,24 @@ const App = () => {
 	}
 
 	return (
-		<>
-			<Grid container spacing={1}>
-				<Grid container item xs={12}>
-					{/* Header */}
-					<h1>Mars Rover Photos</h1>
-				</Grid>
-				<Grid container item xs={12} sm={4} spacing={3}>
-					{/* Radio Button */}
-					<SelectRoverForm setRover={setRover} />
-				</Grid>
-				<Grid container item xs={12} sm={6} spacing={3}>
-					{/* Manifests */}
-					<Manifest />
-				</Grid>
-				<Grid container item xs={12} spacing={3}>
-					{/* Search Form */}
-					<SearchForm rover={rover} />
-				</Grid>
-				<Grid container item xs={12} spacing={3}>
-					{/* Photo Gallery */}
-					{loading && <div>Loading...</div>}
-					{hasErrors && <div>There has been an error processing your request</div>}
-					{photos.length > 0 && <GridGallery photos={normalizePhotos()} />}
-					{photos.length === 0 && !loading && !hasErrors && <div>There are no photos for the specified data</div>}
-				</Grid>
-			</Grid>
-		</>
+		<div className='main-container'>
+			{/* Header */}
+			<header>
+				<h1>Mars Rover Photos</h1>
+			</header>
+			<div className='first-section'>
+				{/* Radio Button */}
+				<SelectRoverForm setRover={setRover} />
+				{/* Manifests */}
+				<Manifest />
+				{/* Search Form */}
+				<SearchForm rover={rover} manifest={manifest} />
+			</div>
+			<div className='second-section'>
+				{/* Photo Gallery */}
+				{photos.length > 0 && <GridGallery photos={normalizePhotos()} />}
+			</div>
+		</div>
 	)
 }
 

@@ -1,9 +1,12 @@
 import Gallery from "react-grid-gallery"
 import * as React from "react"
 import { Pagination } from "@material-ui/lab"
+import { useSelector } from "react-redux"
+import { photosSelector } from "../slices/photos"
 
 export const GridGallery = ({ photos }) => {
 	const [currentPage, setCurrentPage] = React.useState(1)
+	const { loading, hasErrors } = useSelector(photosSelector)
 
 	// Pagination
 	const photosPerPage = 25
@@ -15,16 +18,26 @@ export const GridGallery = ({ photos }) => {
 	const handleChange = (event, value) => setCurrentPage(value)
 
 	return (
-		<div>
-			<h3>Gallery</h3>
+		<div className='gallery'>
+			<h2>Gallery</h2>
+			<hr />
+			{loading && <div>Loading...</div>}
+			{hasErrors && <div>There has been an error processing your request</div>}
+			{photos.length === 0 && !loading && !hasErrors && <div>There are no photos for the specified data</div>}
 			<Gallery
+				margin={10}
 				images={currentPhotos}
 				enableImageSelection={false}
 				backdropClosesModal={true}
 				showCloseButton={false}
 				showImageCount={false}
 			/>
-			<Pagination count={totalPages} page={currentPage} onChange={handleChange} />
+			{console.log(totalPages)}
+			{totalPages !== 1 && (
+				<div className='pagination'>
+					<Pagination count={totalPages} page={currentPage} onChange={handleChange} variant='text' color='primary' size='large' />
+				</div>
+			)}
 		</div>
 	)
 }

@@ -5,15 +5,19 @@ export const Manifest = () => {
 	const { manifest, loading, hasErrors } = useSelector(manifestSelector)
 
 	if (loading) {
-		return <div>Loading...</div>
+		return <div className='card card-manifest'>Loading...</div>
 	}
 	return (
-		<>
-			<h2>{manifest.name}</h2>
-			<p>Launch Date: {manifest.launch_date}</p>
-			<p>Landing Date: {manifest.landing_date}</p>
-			<p>Max Date: {manifest.max_date}</p>
-			<p>Max Sol: {manifest.max_sol}</p>
-		</>
+		<div className='card card-manifest'>
+			<h2>Mission Manifest</h2>
+			<hr />
+			<ul>
+				<h3>Rover name: {manifest.name}</h3>
+				<li>Launch Date: {manifest.launch_date}</li>
+				<li>Landing Date: {manifest.landing_date}</li>
+				<li>Max Date: {manifest.max_date}</li>
+				<li>Max Sol: {manifest.max_sol}</li>
+			</ul>
+		</div>
 	)
 }

@@ -1,0 +1,110 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	font-family: "Roboto", comic-sans;
+	background-color: #f2f5fa;
+	line-height: 200%;
+}
+h1 {
+	font-size: 3rem;
+	text-align: center;
+	margin: 8rem 0 8rem 0;
+	font-weight: 500;
+	color: white;
+}
+
+h2 {
+	font-size: 1.5rem;
+	font-weight: 500;
+	margin-bottom: 0.5rem;
+	color: #14121f;
+}
+h3 {
+	font-size: 1.5rem;
+	font-weight: 500;
+	margin-bottom: 2rem;
+	color: #14121f;
+}
+p,
+label,
+select,
+li {
+	margin-bottom: 0.5rem;
+	font-weight: 300;
+	font-size: 1.1rem;
+	list-style-type: none;
+}
+
+.card {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	background-color: white;
+	padding: 2rem;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1), 0 6px 6px rgba(0, 0, 0, 0.23);
+	border-radius: 0.5rem;
+	margin: 1rem;
+	width: 100%;
+}
+.main-container {
+	display: flex;
+	flex-direction: column;
+}
+header {
+	background-color: #14121f;
+	width: 100vw;
+	clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+}
+
+.first-section {
+	display: flex;
+	padding: 1rem 3rem;
+}
+.second-section {
+	display: flex;
+	margin-bottom: 2rem;
+	padding: 1rem 3rem;
+}
+.card-rover {
+	width: 20%;
+}
+.card-manifest {
+	width: 45%;
+}
+.card-search {
+	display: flex;
+	width: 35%;
+}
+
+.card-search .inputs {
+	display: flex;
+	flex-direction: column;
+}
+.card-search .inputs .form {
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
+	margin: 1rem 0;
+}
+.card-search .inputs .form button {
+	margin-top: 0.5rem;
+}
+
+.gallery {
+	display: flex;
+	flex-direction: column;
+}
+.gallery .pagination {
+	padding-top: 2rem;
+	display: flex;
+	align-self: center;
+}
+hr {
+	margin: 1rem 0;
+}
+.card-rover input {
+	margin: 0.5rem 0.7rem 0.5rem 0;
+}
