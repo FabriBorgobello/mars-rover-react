@@ -34,6 +34,7 @@ export default photosSlice.reducer
 export const photosSelector = (state) => state.photos
 
 // Async thunk actions
+
 export const fetchLatestPhotos = (rover) => async (dispatch) => {
 	dispatch(getPhotos())
 

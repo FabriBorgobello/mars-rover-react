@@ -7,6 +7,9 @@ export const Manifest = () => {
 	if (loading) {
 		return <div className='card card-manifest'>Loading...</div>
 	}
+	if (hasErrors) {
+		return <div className='card card-manifest'>An error has occured. Please reload.</div>
+	}
 	return (
 		<div className='card card-manifest'>
 			<h2>Mission Manifest</h2>

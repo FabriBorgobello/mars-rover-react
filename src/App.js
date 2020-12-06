@@ -6,14 +6,13 @@ import { Manifest } from "./components/Manifest"
 import { fetchManifest, manifestSelector } from "./slices/manifest"
 import { fetchLatestPhotos, photosSelector } from "./slices/photos"
 import { SelectRoverForm } from "./components/SelectRoverForm"
-import { CheckoxCameras } from "./components/CheckoxCameras"
 
 const App = () => {
 	// State
 	const [rover, setRover] = React.useState("curiosity")
-	const [camera, setCamera] = React.useState("")
 	const [sol, setSol] = React.useState("")
 	const [earthDate, setEarthDate] = React.useState("")
+	const [camera, setCamera] = React.useState("")
 	const [availableCameras, setAvailableCameras] = React.useState([])
 
 	// Redux hooks
@@ -53,7 +52,6 @@ const App = () => {
 
 	return (
 		<div className='main-container'>
-			{/* Header */}
 			<header>
 				<h1>Mars Rover Photos</h1>
 			</header>
@@ -78,7 +76,7 @@ const App = () => {
 			<div className='second-section'>
 				{/* Photo Gallery */}
 				{photos.length > 0 && <GridGallery photos={normalizePhotos()} />}
-				{photos.length === 0 && !loading && !hasErrors && <div>There are no photos for the specified data</div>}
+				{photos.length === 0 && !loading && !hasErrors && <div>There are no photos with the specified data</div>}
 			</div>
 		</div>
 	)

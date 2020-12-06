@@ -1,13 +1,14 @@
-import { Button, FormControlLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField, Tooltip } from "@material-ui/core"
 import * as React from "react"
+import { Button, FormControlLabel, InputLabel, MenuItem, Radio, RadioGroup, Select, TextField, Tooltip } from "@material-ui/core"
 import { useDispatch } from "react-redux"
 import { fetchPhotos } from "../slices/photos"
 
 export const SearchForm = ({ rover, manifest, sol, earthDate, camera, setSol, setEarthDate, setCamera, availableCameras }) => {
-	const dispatch = useDispatch()
-
+	// State
 	const [activatedInput, setActivatedInput] = React.useState("sol")
-
+	// Redux hooks
+	const dispatch = useDispatch()
+	// Handlers
 	const handleSubmit = (e) => {
 		e.preventDefault()
 		dispatch(fetchPhotos(rover, sol, earthDate, camera))
@@ -28,6 +29,7 @@ export const SearchForm = ({ rover, manifest, sol, earthDate, camera, setSol, se
 					<FormControlLabel value='sol' control={<Radio />} label='Sol' />
 					<FormControlLabel value='earth_date' control={<Radio />} label='Earth date' />
 				</RadioGroup>
+
 				{/* Sol */}
 				<form className='search-form' onSubmit={handleSubmit}>
 					{activatedInput === "sol" && (
@@ -80,6 +82,7 @@ export const SearchForm = ({ rover, manifest, sol, earthDate, camera, setSol, se
 							})}
 						</Select>
 					</div>
+					
 					{/* Submit */}
 					<Button variant='contained' color='primary' type='submit' children='Search' />
 				</form>

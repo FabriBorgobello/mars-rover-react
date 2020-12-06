@@ -37,7 +37,13 @@ li {
 	font-size: 1.1rem;
 	list-style-type: none;
 }
-
+header {
+	background-color: #14121f;
+	clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
+}
+hr {
+	margin: 1rem 0;
+}
 .card {
 	display: flex;
 	flex-direction: column;
@@ -52,10 +58,6 @@ li {
 .main-container {
 	display: flex;
 	flex-direction: column;
-}
-header {
-	background-color: #14121f;
-	clip-path: polygon(0 0, 100% 0, 100% 88%, 0% 100%);
 }
 
 .first-section,
@@ -99,9 +101,7 @@ header {
 	display: flex;
 	align-self: center;
 }
-hr {
-	margin: 1rem 0;
-}
+
 .card-rover input {
 	margin: 0.5rem 0.7rem 0.5rem 0;
 }
