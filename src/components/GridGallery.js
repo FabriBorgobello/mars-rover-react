@@ -23,7 +23,6 @@ export const GridGallery = ({ photos }) => {
 			<hr />
 			{loading && <div>Loading...</div>}
 			{hasErrors && <div>There has been an error processing your request</div>}
-			{photos.length === 0 && !loading && !hasErrors && <div>There are no photos for the specified data</div>}
 			<Gallery
 				margin={10}
 				images={currentPhotos}
@@ -32,7 +31,6 @@ export const GridGallery = ({ photos }) => {
 				showCloseButton={false}
 				showImageCount={false}
 			/>
-			{console.log(totalPages)}
 			{totalPages !== 1 && (
 				<div className='pagination'>
 					<Pagination count={totalPages} page={currentPage} onChange={handleChange} variant='text' color='primary' size='large' />
