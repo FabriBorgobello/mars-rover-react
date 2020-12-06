@@ -6,6 +6,7 @@ import { fetchPhotos } from "../slices/photos"
 export const SearchForm = ({ rover, manifest, sol, earthDate, camera, setSol, setEarthDate, setCamera, availableCameras }) => {
 	// State
 	const [activatedInput, setActivatedInput] = React.useState("sol")
+
 	// Redux hooks
 	const dispatch = useDispatch()
 	// Handlers
@@ -82,7 +83,7 @@ export const SearchForm = ({ rover, manifest, sol, earthDate, camera, setSol, se
 							})}
 						</Select>
 					</div>
-					
+
 					{/* Submit */}
 					<Button variant='contained' color='primary' type='submit' children='Search' />
 				</form>

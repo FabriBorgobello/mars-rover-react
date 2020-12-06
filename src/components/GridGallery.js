@@ -3,6 +3,7 @@ import * as React from "react"
 import { Pagination } from "@material-ui/lab"
 import { useSelector } from "react-redux"
 import { photosSelector } from "../slices/photos"
+import { CircularProgress } from "@material-ui/core"
 
 export const GridGallery = ({ photos }) => {
 	const [currentPage, setCurrentPage] = React.useState(1)
@@ -21,16 +22,18 @@ export const GridGallery = ({ photos }) => {
 		<div className='gallery'>
 			<h2>Gallery</h2>
 			<hr />
-			{loading && <div>Loading...</div>}
-			{hasErrors && <div>There has been an error processing your request</div>}
-			<Gallery
-				margin={10}
-				images={currentPhotos}
-				enableImageSelection={false}
-				backdropClosesModal={true}
-				showCloseButton={false}
-				showImageCount={false}
-			/>
+			{loading && <CircularProgress />}
+			{hasErrors && <div className='card card-manifest'>An error has occured. Please reload.</div>}
+			{photos && !loading && (
+				<Gallery
+					margin={10}
+					images={currentPhotos}
+					enableImageSelection={false}
+					backdropClosesModal={true}
+					showCloseButton={false}
+					showImageCount={false}
+				/>
+			)}
 			{totalPages !== 1 && (
 				<div className='pagination'>
 					<Pagination count={totalPages} page={currentPage} onChange={handleChange} variant='text' color='primary' size='large' />

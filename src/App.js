@@ -57,7 +57,7 @@ const App = () => {
 			</header>
 			<div className='first-section'>
 				{/* Radio Button */}
-				<SelectRoverForm rover={rover} setRover={setRover} />
+				<SelectRoverForm rover={rover} setRover={setRover} setSol={setSol} setEarthDate={setEarthDate} />
 				{/* Manifests */}
 				<Manifest />
 				{/* Search Form */}
@@ -76,7 +76,14 @@ const App = () => {
 			<div className='second-section'>
 				{/* Photo Gallery */}
 				{photos.length > 0 && <GridGallery photos={normalizePhotos()} />}
-				{photos.length === 0 && !loading && !hasErrors && <div>There are no photos with the specified data</div>}
+				{photos.length === 0 && !loading && !hasErrors && (
+					<div className='emptyState'>There are no photos with the specified data</div>
+				)}
+			</div>
+			<div className='footer'>
+				<a className='signature' href='https://www.linkedin.com/in/fabricio-borgobello-59468775/' target='_blank' rel='noreferrer'>
+					Fabricio Borgobello
+				</a>
 			</div>
 		</div>
 	)
