@@ -44,21 +44,23 @@ export const fetchLatestPhotos = (rover) => async (dispatch) => {
 		dispatch(getPhotosFailure())
 	}
 }
-export const fetchPhotosBySol = (rover, sol) => async (dispatch) => {
+export const fetchPhotosBySol = (rover, sol, camera) => async (dispatch) => {
 	dispatch(getPhotos())
 
+	const objParams = camera ? { params: { sol: sol, camera: camera } } : { params: { sol: sol } }
 	try {
-		const response = await axios.get(`rovers/${rover}/photos?sol=${sol}`)
+		const response = await axios.get(`rovers/${rover}/photos`, objParams)
 		dispatch(getPhotosSuccess(response.data.photos))
 	} catch (error) {
 		dispatch(getPhotosFailure())
 	}
 }
-export const fetchPhotosByEarthDate = (rover, earthDate) => async (dispatch) => {
+export const fetchPhotosByEarthDate = (rover, earthDate, camera) => async (dispatch) => {
 	dispatch(getPhotos())
 
+	const objParams = camera ? { params: { earth_date: earthDate, camera: camera } } : { params: { earth_date: earthDate } }
 	try {
-		const response = await axios.get(`rovers/${rover}/photos?earth_date=${earthDate}`)
+		const response = await axios.get(`rovers/${rover}/photos`, objParams)
 		dispatch(getPhotosSuccess(response.data.photos))
 	} catch (error) {
 		dispatch(getPhotosFailure())

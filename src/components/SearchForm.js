@@ -1,42 +1,29 @@
+import * as React from "react"
 import { useDispatch } from "react-redux"
 import { fetchPhotosByEarthDate, fetchPhotosBySol } from "../slices/photos"
 
-export const SearchForm = ({ rover, setRover, sol, setSol, earthDate, setEarthDate }) => {
+export const SearchForm = ({ rover, availableCameras }) => {
 	const dispatch = useDispatch()
-
+	console.log(availableCameras)
 	return (
 		<div>
-			<h3>Filter photos</h3>
+			<h3>Search photos by...</h3>
 			{/* Sol */}
-			<form
-				onSubmit={(e) => {
-					e.preventDefault()
-					setEarthDate("")
-					dispatch(fetchPhotosBySol(rover, sol))
-				}}
-			>
-				<label>Search by Sol</label>
-				<input value={sol} type='number' placeholder='Enter a Sol...' onChange={(e) => setSol(e.target.value)} required />
-				<button type='submit'>Search</button>
-			</form>
+			<label>Sol date</label>
+			<input
+				type='number'
+				placeholder='Enter a Sol...'
+				onChange={(e) => dispatch(fetchPhotosBySol(rover, e.target.value))}
+				required
+			/>
 			{/* Earth Date */}
-			<form
-				onSubmit={(e) => {
-					e.preventDefault()
-					setSol("")
-					dispatch(fetchPhotosByEarthDate(rover, earthDate))
-				}}
-			>
-				<label>Search by Earth Date</label>
-				<input
-					value={earthDate}
-					type='date'
-					placeholder='Enter a date...'
-					onChange={(e) => setEarthDate(e.target.value)}
-					required
-				/>
-				<button type='submit'>Search</button>
-			</form>
+			<label>Earth date</label>
+			<input
+				type='date'
+				placeholder='Enter a date...'
+				onChange={(e) => dispatch(fetchPhotosByEarthDate(rover, e.target.value))}
+				required
+			/>
 		</div>
 	)
 }

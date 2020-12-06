@@ -1,14 +1,8 @@
-export const SelectRoverForm = ({ setRover, setSol, setEarthDate }) => {
+export const SelectRoverForm = ({ setRover }) => {
 	return (
 		<>
 			<h2>Rover</h2>
-			<div
-				onChange={(e) => {
-					setRover(e.target.value)
-					setSol("")
-					setEarthDate("")
-				}}
-			>
+			<div onChange={(e) => setRover(e.target.value)}>
 				<input type='radio' id='curiosity' name='rover' value='curiosity' defaultChecked />
 				<label htmlFor='curiosity'>Curiosity</label>
 				<br />
